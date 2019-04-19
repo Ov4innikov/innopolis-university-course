@@ -18,7 +18,7 @@ public class TestPersonListRandomGenerator {
         for (Person person : people) {
             System.out.println(person);
         }
-        Assert.assertEquals(100,people.getSize());
+        Assert.assertEquals(100, people.getSize());
     }
 
     @Test
@@ -29,9 +29,13 @@ public class TestPersonListRandomGenerator {
         }
         System.out.println("--------------------------------------------");
         people.sort();
+        int i = 0;
         for (Person person : people) {
+            i++;
             System.out.println(person);
         }
-        Assert.assertEquals(100,people.getSize());
+        System.out.println(people.getCursorLastE().getPerson());
+        Assert.assertEquals(100, people.getSize());
+        Assert.assertEquals(100, i);
     }
 }

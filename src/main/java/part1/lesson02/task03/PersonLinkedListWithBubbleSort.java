@@ -26,6 +26,7 @@ public class PersonLinkedListWithBubbleSort extends AbstractPersonLinkedList {
             for (int j = i - 1; j > 0; j--) {
                 if (cursor.getPerson().compareTo(prevCursor.getPerson()) < 0) {
                     if (cursor == getCursorLastE()) setCursorLastE(prevCursor);
+                    if (prevCursor == getCursorFirstE()) setCursorFirstE(cursor);
                     cursor.remove();
                     prevCursor.putBefore(cursor);
                     prevCursor = cursor.getPrev();
@@ -33,7 +34,6 @@ public class PersonLinkedListWithBubbleSort extends AbstractPersonLinkedList {
                     cursor = cursor.getPrev();
                     prevCursor = cursor.getPrev();
                 }
-
             }
         }
     }
