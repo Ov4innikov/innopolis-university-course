@@ -8,12 +8,22 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Класс для построения двухсвязаного списка на основе узлов PersonNode
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public abstract class AbstractPersonLinkedList implements Iterable<Person> {
 
     private PersonNode cursorFirstE;
     private PersonNode cursorLastE;
     private int size;
 
+    /**
+     * Метод добавляет эллемент в конец списка
+     * @param person - добавляемый Person
+     */
     public void add(Person person) {
         if (cursorFirstE == null) cursorFirstE = new PersonNode(person);
         if (cursorLastE == null) {
@@ -26,6 +36,10 @@ public abstract class AbstractPersonLinkedList implements Iterable<Person> {
         size++;
     }
 
+    /**
+     * Метод удаляет из спика первый попашийся узел с эллементом идентичным Person
+     * @param person - удаляемый Person
+     */
     public void remove(Person person) {
         if (cursorFirstE == null) return;
         PersonNode personNode = cursorFirstE;

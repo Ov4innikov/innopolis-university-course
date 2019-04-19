@@ -5,9 +5,17 @@ import part1.lesson02.task03.model.PersonNode;
 
 import java.util.LinkedList;
 
+/**
+ * Класс реализующий сортировку пузырьковым методом
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class PersonLinkedListWithBubbleSort extends AbstractPersonLinkedList {
 
-
+    /**
+     * Метод сортирует внутренний список с помощью пузырьковой сортировки
+     */
     @Override
     public void sort() throws DublicatePersonException {
         PersonNode cursor;

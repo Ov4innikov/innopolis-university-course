@@ -2,6 +2,12 @@ package part1.lesson02.task03.model;
 
 import part1.lesson02.task03.exception.DublicatePersonException;
 
+/**
+ * Person
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class Person {
 
     private int age;
@@ -38,6 +44,12 @@ public class Person {
         this.name = name;
     }
 
+    /**
+     * Функция сравнивает this и person, и если this должен идти раньше person, то возвращает отрицательное число
+     *
+     * @param person - Person
+     * @return 1 или 0 или -1
+     */
     public byte compareTo(Person person) throws DublicatePersonException {
         if (this.equals(person)){
             //throw new DublicatePersonException();

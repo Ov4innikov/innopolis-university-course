@@ -1,5 +1,11 @@
 package part1.lesson02.task03.model;
 
+/**
+ * Узел для построения двухсвязаного списка из обьектов Person
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class PersonNode {
 
     private Person person;

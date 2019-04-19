@@ -7,8 +7,17 @@ import part1.lesson02.task03.model.Sex;
 
 import java.util.LinkedList;
 
+/**
+ * Класс реализующий сортировку методом вставки
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class PersonLinkedListWithInsertionSort extends AbstractPersonLinkedList {
 
+    /**
+     * Метод сортирует внутренний список с помощью сортировками вставками
+     */
     @Override
     public void sort() throws DublicatePersonException {
         PersonNode nodeCursor = getCursorFirstE();
