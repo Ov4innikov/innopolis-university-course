@@ -7,8 +7,14 @@ package part1.lesson02.task01;
  */
 public class HelloWorld {
 
+    static String nullString;
+
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        throw new HelloWorldException();
+        try {
+            nullString = nullString.concat("");
+        } catch (NullPointerException e) {
+            throw new HelloWorldException();
+        }
     }
 }
