@@ -8,7 +8,7 @@ import part1.lesson02.task03.exception.DublicatePersonException;
  * @version 1.0.0
  * @autor Овчинников Евгений
  */
-public class Person {
+public class Person implements Comparable<Person> {
 
     private int age;
     private Sex sex;
@@ -50,12 +50,17 @@ public class Person {
      * @param person - Person
      * @return 1 или 0 или -1
      */
-    public byte compareTo(Person person) throws DublicatePersonException {
-        if (this.equals(person)){
+    @Override
+    public int compareTo(Person person) {
+        if (this.equals(person)) {
             //throw new DublicatePersonException();
             return 0;
         }
-        if ((this.getSex() == Sex.MAN && person.getSex() == Sex.WOMAN) || (this.getAge() > person.getAge() && (this.getSex() == person.getSex())) || (this.getAge() >= person.getAge() && this.getSex() == person.getSex() && this.getName().compareTo(person.getName()) <= -1)) {
+        if ((this.getSex() == Sex.MAN && person.getSex() == Sex.WOMAN)) {
+            return -1;
+        } else if ((this.getAge() > person.getAge() && (this.getSex() == person.getSex()))) {
+            return -1;
+        } else if((this.getAge() >= person.getAge() && this.getSex() == person.getSex() && this.getName().compareTo(person.getName()) <= -1)) {
             return -1;
         }
         return 1;

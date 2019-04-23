@@ -3,10 +3,14 @@ package part1.lesson02.task03;
 import part1.lesson02.task03.exception.DublicatePersonException;
 import part1.lesson02.task03.model.Person;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Application {
 
     public static void main(String[] args) throws DublicatePersonException {
-
+        List<Number> number = Arrays.<Number>asList(11);
         System.out.println("--------------------------------------------");
         long start = System.currentTimeMillis();
         PersonLinkedListWithInsertionSort people1 = PersonListRandomGenerator.generatePersonLinkedListWithInsertionSort(100);
