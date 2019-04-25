@@ -1,4 +1,4 @@
-package lesson04.task01;
+package part1.lesson04.task01;
 
 import org.junit.Assert;
 import org.junit.Test;
