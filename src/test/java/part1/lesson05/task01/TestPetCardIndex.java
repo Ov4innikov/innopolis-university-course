@@ -8,7 +8,7 @@ import part1.lesson05.task01.model.*;
 public class TestPetCardIndex {
 
     @Test
-    public void testSuccesAddAndPrintPets() throws DublicatePetEcxeption {
+    public void testSuccesAddAndUpdateAndPrintPets() throws DublicatePetEcxeption {
         PetCardIndex<Pet> petCardIndex = new PetCardIndex<Pet>();
         Owner owner1 = new Owner("Jack", 20, Sex.MAN);
         Owner owner2 = new Owner("Anton", 21, Sex.MAN);
@@ -24,6 +24,7 @@ public class TestPetCardIndex {
         petCardIndex.add(pet4);
         petCardIndex.add(pet5);
         petCardIndex.add(pet6);
+        petCardIndex.update(2,4);
         petCardIndex.printPets();
     }
 
