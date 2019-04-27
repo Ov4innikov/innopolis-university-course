@@ -6,7 +6,7 @@ package part1.lesson05.task01.model;
  * @version 1.0.0
  * @autor Овчинников Евгений
  */
-public class Pet implements Comparable<Pet> {
+public class Pet {
 
     private int id;
     private String name;
@@ -25,18 +25,6 @@ public class Pet implements Comparable<Pet> {
         this.id = id;
         this.name = name;
         this.weight = weight;
-    }
-
-    @Override
-    public int compareTo(Pet o) {
-        if (owner.compareTo(o.getOwner()) < 0) {
-            return -100;
-        } else if (name.compareTo(o.getName()) < 0) {
-            return -10;
-        } else if (weight < o.getWeight()) {
-            return -1;
-        }
-        return 0;
     }
 
     public int getId() {
@@ -84,5 +72,10 @@ public class Pet implements Comparable<Pet> {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" + "id=" + id + ", name='" + name + '\'' + ", owner=" + owner + ", weight=" + weight + '}';
     }
 }

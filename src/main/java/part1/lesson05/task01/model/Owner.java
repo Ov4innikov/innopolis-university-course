@@ -80,4 +80,9 @@ public class Owner implements Comparable<Owner> {
         result = 31 * result + sex.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Owner{" + "name='" + name + '\'' + ", age=" + age + ", sex=" + sex + '}';
+    }
 }
