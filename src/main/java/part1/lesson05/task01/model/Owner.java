@@ -20,6 +20,12 @@ public class Owner implements Comparable<Owner> {
     private Sex sex;
     private Set<Pet> pets = new HashSet<Pet>();
 
+    public Owner(String name, int age, Sex sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
     public void addPet(Pet pet) {
         pets.add(pet);
         if (pet.getOwner() == null) pet.setOwner(this);
