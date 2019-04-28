@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Класс инкапсулирующий в себе HashSet обьектов
+ * Класс инкапсулирующий в себе HashSet обьектов.
  *
  * @version 1.0.0
  * @autor Овчинников Евгений
