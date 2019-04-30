@@ -14,6 +14,9 @@ import java.util.*;
 public class PetCardIndex<E extends Pet> {
 
     private Set<E> pets = new TreeSet<E>(new PetOwnerNameComparator().thenComparing(new PetNameComparator()).thenComparing(new PetWeightComparator()));
+    private Map<String, List<E>> petsMap = new HashMap<String, List<E>>();
+    private Map<Integer, E> integerEMap = new HashMap<Integer, E>();
+
 
     /**
      * Метод добавления домашнего животного в общий список.
@@ -24,6 +27,14 @@ public class PetCardIndex<E extends Pet> {
     public void add(E e) throws DublicatePetEcxeption {
         if (pets.contains(e)) throw new DublicatePetEcxeption();
         pets.add(e);
+        if (petsMap.containsKey(e.getName())) {
+            petsMap.get(e.getName()).add(e);
+        } else {
+            List<E> list = new ArrayList<E>();
+            list.add(e);
+            petsMap.put(e.getName(), list);
+        }
+        integerEMap.put(e.getId(), e);
     }
 
     /**
@@ -32,14 +43,8 @@ public class PetCardIndex<E extends Pet> {
      * @param name - кличка
      * @return E
      */
-    public E find(String name) {
-        Pet e = null;
-        for (Pet pet : pets) {
-            if (pet.getName().equals(name)) {
-                return (E) pet;
-            }
-        }
-        return null;
+    public List<E> find(String name) {
+        return petsMap.get(name);
     }
 
     /**
@@ -49,11 +54,7 @@ public class PetCardIndex<E extends Pet> {
      * @param weight - новый вес
      */
     public void update(int id, double weight) {
-        for (Pet pet : pets) {
-            if (pet.getId() == id) {
-                pet.setWeight(weight);
-            }
-        }
+        integerEMap.get(id).setWeight(weight);
     }
 
     /**
