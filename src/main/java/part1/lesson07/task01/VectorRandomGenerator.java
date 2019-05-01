@@ -21,7 +21,7 @@ public class VectorRandomGenerator {
     public static int[] generateIntRandomVector(Integer n) {
         int vector[] = new int[n];
         for (int i = 0; i < n; i++) {
-            vector[i] = Math.abs(secureRandom.nextInt(12));
+            vector[i] = Math.abs(secureRandom.nextInt(11)) + 1;
         }
         return vector;
     }

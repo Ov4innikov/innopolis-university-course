@@ -1,5 +1,11 @@
 package part1.lesson07.task01;
 
+/**
+ * Класс определяющий поток.
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class LessonSixThread extends Thread {
 
     private int lastDigitOfDecimalNumber;

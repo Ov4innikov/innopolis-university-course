@@ -6,6 +6,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * Класс запускающий потоки для преобразования массива.
+ *
+ * @version 1.0.0
+ * @autor Овчинников Евгений
+ */
 public class FactorialExecutor {
 
     private int[] arrayInt;
@@ -16,6 +22,11 @@ public class FactorialExecutor {
         this.arrayInt = arrayInt;
     }
 
+    /**
+     * Функция для запуска пула потоков, которые вычисляют факториал и преобразут массив.
+     *
+     * @throws InterruptedException
+     */
     public void go() throws InterruptedException {
         List<LessonSixThread> threads = new ArrayList<LessonSixThread>();
         for (int i = 0; i < 10; i++) {
