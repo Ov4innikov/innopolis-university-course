@@ -54,7 +54,10 @@ public class PetCardIndex<E extends Pet> {
      * @param weight - новый вес
      */
     public void update(int id, double weight) {
-        integerEMap.get(id).setWeight(weight);
+        E pet = integerEMap.get(id);
+        pets.remove(pet);
+        pet.setWeight(weight);
+        pets.add(pet);
     }
 
     /**
