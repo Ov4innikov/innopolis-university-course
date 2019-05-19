@@ -1,5 +1,8 @@
 package part1.lesson10.task01.model;
 
+import part1.lesson10.task01.service.ConnectionService;
+import part1.lesson10.task01.service.MessageService;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,41 +13,52 @@ import java.util.Map;
 
 public class Connection implements Runnable {
 
-    private String user;
-    private Map<String, Socket> socketMap;
-    private Map<String, Instant> instantMap;
     private Socket clientSocket;
     private BufferedReader in;
-    private BufferedWriter out;
     private ConnectionMode connectionMode = ConnectionMode.BROADCAST;
+    private ConnectionService connectionService;
+    private String name;
+    private MessageService messageService;
 
-    public Connection(Map<String, Instant> instantMap, Socket clientSocket) {
-        this.socketMap = socketMap;
-        this.instantMap = instantMap;
+    public Connection(Socket clientSocket, ConnectionService connectionService, MessageService messageService) {
         this.clientSocket = clientSocket;
+        this.connectionService = connectionService;
+        this.messageService = messageService;
     }
 
     @Override
     public void run() {
         //считывание имени и его регистрация
+        try {
+            System.out.println("Start read name: " + clientSocket);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            name = in.readLine();
+            System.out.println("Connecting " + name);
+            connectionService.addConnection(name, this);
 
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //цикл получения от клиента сообщений
         while (connectionMode != ConnectionMode.STOP) {
             try {
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String s = in.readLine();
+                System.out.println("Message: " + s);
+                connectionService.updateTime(name);
                 if (s != null) {
-                    if (s.equals("broadcast\n")) {
+                    if (s.equals("broadcast")) {
                         connectionMode = ConnectionMode.BROADCAST;
                         continue;
-                    } else if (s.equals("unicast\n")) {
+                    } else if (s.equals("unicast")) {
                         connectionMode = ConnectionMode.UNICAST;
                         continue;
-                    } else if (s.equals("stop\n")) {
+                    } else if (s.equals("stop")) {
                         connectionMode = ConnectionMode.STOP;
                         continue;
                     }
+                    if (connectionMode == ConnectionMode.UNICAST) messageService.sendUnicastMessage(s.substring(0,s.indexOf(':')),s);
+                    if (connectionMode == ConnectionMode.BROADCAST) messageService.sendBroacastMessage(s);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -56,14 +70,6 @@ public class Connection implements Runnable {
         connectionMode = ConnectionMode.STOP;
     }
 
-    public Map<String, Socket> getSocketMap() {
-        return socketMap;
-    }
-
-    public Map<String, Instant> getInstantMap() {
-        return instantMap;
-    }
-
     public Socket getClientSocket() {
         return clientSocket;
     }
@@ -72,15 +78,11 @@ public class Connection implements Runnable {
         return in;
     }
 
-    public BufferedWriter getOut() {
-        return out;
-    }
-
     public ConnectionMode getConnectionMode() {
         return connectionMode;
     }
 
-    public String getUser() {
-        return user;
+    public void setConnectionMode(ConnectionMode connectionMode) {
+        this.connectionMode = connectionMode;
     }
 }

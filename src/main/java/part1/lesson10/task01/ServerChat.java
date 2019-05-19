@@ -1,6 +1,7 @@
 package part1.lesson10.task01;
 
 import part1.lesson10.task01.model.Connection;
+import part1.lesson10.task01.service.ConnectionService;
 import part1.lesson10.task01.service.MessageService;
 
 import java.io.IOException;
@@ -32,13 +33,17 @@ public class ServerChat implements AutoCloseable {
     private ExecutorService executorService;
     private ConcurrentMap<String, Instant> instantMap;
     private MessageService messageService;
+    private ConnectionService connectionService;
+    private Thread connectionServiceThread;
 
     public ServerChat() throws IOException {
         serverSocket = new ServerSocket(9999);
         connectionMap = new ConcurrentHashMap<String, Connection>();
         executorService = Executors.newFixedThreadPool(100);
         instantMap = new ConcurrentHashMap<String, Instant>();
-        messageService = new MessageService();
+        messageService = new MessageService(connectionMap);
+        connectionService = new ConnectionService(connectionMap, instantMap);
+        connectionServiceThread = new Thread(connectionService);
     }
 
     /**
@@ -48,7 +53,8 @@ public class ServerChat implements AutoCloseable {
         try {
             while (true) {
                 socket = serverSocket.accept();
-                Connection connection = new Connection(instantMap, socket);
+                Connection connection = new Connection(socket, connectionService, messageService);
+                System.out.println("Start connection! " + socket);
                 executorService.execute(connection);
             }
         } finally {
@@ -68,10 +74,8 @@ public class ServerChat implements AutoCloseable {
     @Override
     public void close() throws Exception {
         serverSocket.close();
-        Iterator iterator = connectionMap.values().iterator();
-        while (iterator.hasNext()) {
-            ((Connection) iterator.next()).getClientSocket().close();
-        }
+        connectionService.close();
         executorService.shutdown();
+        connectionServiceThread.join();
     }
 }
