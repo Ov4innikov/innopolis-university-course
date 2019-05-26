@@ -10,6 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * Класс реализующий сервис подключений.
+ */
 public class ConnectionService implements Runnable {
 
     private boolean stop = false;

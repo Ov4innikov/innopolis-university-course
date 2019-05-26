@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+/**
+ * Класс работающий на стороне клиента, отслеживающий приходящие сообщения.
+ */
 public class ClientMessageReader implements Runnable {
 
     private Socket socket;

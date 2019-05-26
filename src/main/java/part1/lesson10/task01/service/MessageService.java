@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * Класс реализующий менеджер сообщений.
+ */
 public class MessageService {
 
     private ConcurrentMap<String, Connection> connectionMap;
@@ -15,9 +18,9 @@ public class MessageService {
         this.connectionMap = connectionMap;
     }
 
-    public void sendBroacastMessage(String message) {
+    public void sendBroacastMessage(String message, String name) {
         System.out.println("Send broadcast");
-        connectionMap.entrySet().parallelStream().forEach(con -> {
+        connectionMap.entrySet().parallelStream().filter(con -> !con.getKey().equals(name)).forEach(con -> {
             try {
                 BufferedWriter out = new BufferedWriter(new OutputStreamWriter(con.getValue().getClientSocket().getOutputStream()));
                 out.write(message);

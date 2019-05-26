@@ -11,6 +11,9 @@ import java.net.Socket;
 import java.time.Instant;
 import java.util.Map;
 
+/**
+ * Класс подключения.
+ */
 public class Connection implements Runnable {
 
     private Socket clientSocket;
@@ -30,10 +33,8 @@ public class Connection implements Runnable {
     public void run() {
         //считывание имени и его регистрация
         try {
-            System.out.println("Start read name: " + clientSocket);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             name = in.readLine();
-            System.out.println("Connecting " + name);
             connectionService.addConnection(name, this);
 
         } catch (IOException e) {
@@ -44,7 +45,6 @@ public class Connection implements Runnable {
             try {
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String s = in.readLine();
-                System.out.println("Message: " + s);
                 connectionService.updateTime(name);
                 if (s != null) {
                     if (s.equals("broadcast")) {
@@ -58,7 +58,7 @@ public class Connection implements Runnable {
                         continue;
                     }
                     if (connectionMode == ConnectionMode.UNICAST) messageService.sendUnicastMessage(s.substring(0,s.indexOf(':')),s);
-                    if (connectionMode == ConnectionMode.BROADCAST) messageService.sendBroacastMessage(s);
+                    if (connectionMode == ConnectionMode.BROADCAST) messageService.sendBroacastMessage(s, name);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
