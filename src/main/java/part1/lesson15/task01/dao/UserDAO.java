@@ -78,7 +78,7 @@ public class UserDAO {
                 User user;
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    user = User.builder().id(resultSet.getInt(0)).name(resultSet.getString(1)).birthday(resultSet.getDate(2)).loginId(resultSet.getInt(3)).city(resultSet.getString(4)).email(resultSet.getString(5)).description(resultSet.getString(6)).build();
+                    user = User.builder().id(resultSet.getInt(1)).name(resultSet.getString(2)).birthday(resultSet.getDate(3)).loginId(resultSet.getInt(4)).city(resultSet.getString(5)).email(resultSet.getString(6)).description(resultSet.getString(7)).build();
                     users.add(user);
                 }
             } finally {

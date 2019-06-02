@@ -21,6 +21,10 @@
             <AppenderRef ref="MyPostgreDatabase"/>
         </Logger>
 
+        <Logger name= "part1.lesson17" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="Console"/>

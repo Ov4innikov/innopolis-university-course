@@ -1,9 +1,9 @@
-package part1.lesson16.task01.dao;
+package part1.lesson17.task01.dao;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import part1.lesson16.task01.Application;
-import part1.lesson16.task01.model.User;
+import part1.lesson17.task01.ConnectionFactory;
+import part1.lesson17.task01.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,17 +28,27 @@ public class UserDAO {
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
 
-    private static final String INSERT_INTO_USER = "insert into lesson15.\"USER\" values (?, ?, ?, ?, ?, ?, ?)";
-    private static final String SELECT_USERS_BY_LOGINID_AND_NAME = "select * from lesson15.\"USER\" where login_id = ? and name = ?";
+    public static final String INSERT_INTO_USER = "insert into lesson15.\"USER\" values (?, ?, ?, ?, ?, ?, ?)";
+    public static final String SELECT_USERS_BY_LOGINID_AND_NAME = "select * from lesson15.\"USER\" where login_id = ? and name = ?";
+    public static final String UPDATE_USER_BY_ID = "update lesson15.\"USER\" set description = 'updating' where id = ?";
+    public static final String DELETE_USER_BY_ID = "delete * from lesson15.\"USER\" where id = ?";
 
-    public UserDAO() {}
+    private final ConnectionFactory connectionFactory;
+
+    public UserDAO(ConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
+
+    public UserDAO() {
+        this.connectionFactory = new ConnectionFactory();
+    }
 
     /**
      * Вставить пользователя. Пункт задания 2.a.
      * @param user
      */
     public void insertUser(User user) {
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_USER);) {
+        try (Connection connection = connectionFactory.getConnect(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_USER);) {
             logger.info("insert user:{}", user);
             preparedStatement.setInt(1, user.getId());
             preparedStatement.setString(2, user.getName());
@@ -75,7 +85,7 @@ public class UserDAO {
      */
     public List<User> getUsersByLoginIdAndName(int loginId, String name) {
         List<User> users = new ArrayList<User>();
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS_BY_LOGINID_AND_NAME);) {
+        try (Connection connection = connectionFactory.getConnect(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS_BY_LOGINID_AND_NAME);) {
             logger.info("find user by login_id = {}, name = {}", loginId, name);
             ResultSet resultSet = null;
             preparedStatement.setInt(1, loginId);
@@ -100,7 +110,6 @@ public class UserDAO {
             logger.error(e);
         }
         return users;
-
     }
 
     /**
@@ -162,6 +171,34 @@ public class UserDAO {
             } catch (SQLException e1) {
                 logger.error("SQLException in rollback" + e1.getMessage());
             }
+            logger.error(e);
+        }
+    }
+
+    /**
+     * Обновить пользователя по id.
+     * @param userId
+     */
+    public void updateUserById(int userId) {
+        try (Connection connection = connectionFactory.getConnect(); PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_BY_ID);) {
+            logger.info("update user with id:{}", userId);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+    }
+
+    /**
+     * Удалить пользователя по id.
+     * @param userId
+     */
+    public void deleteUserById(int userId) {
+        try (Connection connection = connectionFactory.getConnect(); PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_BY_ID);) {
+            logger.info("delete user with id:{}", userId);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             logger.error(e);
         }
     }

@@ -1,4 +1,4 @@
-package part1.lesson16.task01;
+package part1.lesson17.task01;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -35,6 +35,10 @@ public class ConnectionFactory {
     public ConnectionFactory() {}
 
     public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
+
+    public Connection getConnect() throws SQLException {
         return dataSource.getConnection();
     }
 }
