@@ -6,11 +6,11 @@ import part1.lesson22.task01.entity.Person;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class PersonDAOImpl implements PersonDAO {
-    private static Logger logger = Logger.getLogger(PersonDAOImpl.class.getName());
+    private static final Logger logger = LogManager.getLogger(PersonDAOImpl.class.getName());
     private final Connection connection;
 
     public PersonDAOImpl(Connection con) {

@@ -25,6 +25,9 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
+        <Logger name= "part1.lesson22" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="Console"/>

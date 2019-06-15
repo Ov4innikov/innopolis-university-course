@@ -12,11 +12,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class PersonServiceImpl implements PersonService {
-    private Logger logger = Logger.getLogger(PersonServiceImpl.class.getName());
+    private static final Logger logger = LogManager.getLogger(PersonServiceImpl.class.getName());
     private final PersonDAO personDAO;
 
     public PersonServiceImpl(Connection con) {

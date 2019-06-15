@@ -5,6 +5,7 @@ import part1.lesson22.task01.service.PersonService;
 import part1.lesson22.task01.service.PersonServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
+@WebServlet(name = "personList", loadOnStartup = 1, urlPatterns = "/person/list")
 public class ListPersonServlet extends HttpServlet {
     private PersonService person;
 
