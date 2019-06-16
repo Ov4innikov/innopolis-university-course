@@ -15,17 +15,16 @@ import org.apache.logging.log4j.Logger;
  * @autor Овчинников Евгений
  */
 public class PersonDAOImpl implements PersonDAO {
+
     private static final Logger logger = LogManager.getLogger(PersonDAOImpl.class.getName());
     private final Connection connection;
-
     public PersonDAOImpl(Connection con) {
         this.connection = con;
     }
-
     private static final String INSERT_PERSON_SQL_TEMPLATE =
-            "insert into person (name, birth_date) values (?, ?)";
+            "insert into person (name, birth_date, email, phone) values (?, ?, ?, ?)";
     private static final String SELECT_PERSON_SQL_TEMPLATE =
-            "select id, name, birth_date from person";
+            "select * from person";
 
     @Override
     public List<Person> getList() {
@@ -37,6 +36,8 @@ public class PersonDAOImpl implements PersonDAO {
                     person.setId(resultSet.getInt(1));
                     person.setName(resultSet.getString(2));
                     person.setBirthDate(resultSet.getDate(3));
+                    person.setEmail(resultSet.getString(4));
+                    person.setPhone(resultSet.getString(5));
                     result.add(person);
                 }
             }
@@ -56,6 +57,8 @@ public class PersonDAOImpl implements PersonDAO {
             } else {
                 statement.setDate(2, new Date(person.getBirthDate().getTime()));
             }
+            statement.setString(3, person.getEmail());
+            statement.setString(4, person.getPhone());
             statement.execute();
             return true;
         } catch (SQLException e) {

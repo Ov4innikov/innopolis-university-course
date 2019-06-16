@@ -11,6 +11,8 @@ public class Person {
     private int id;
     private String name;
     private Date birthDate;
+    private String email;
+    private String phone;
 
     public int getId() {
         return id;
@@ -34,6 +36,22 @@ public class Person {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
