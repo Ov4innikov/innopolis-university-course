@@ -1,4 +1,4 @@
-package part1.lesson22.task01.entity;
+package part1.lesson23.task01.entity;
 
 import java.util.Date;
 import java.util.Objects;

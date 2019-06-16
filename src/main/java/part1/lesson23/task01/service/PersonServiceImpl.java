@@ -1,8 +1,8 @@
-package part1.lesson22.task01.service;
+package part1.lesson23.task01.service;
 
-import part1.lesson22.task01.dao.PersonDAO;
-import part1.lesson22.task01.dao.jdbc.PersonDAOImpl;
-import part1.lesson22.task01.entity.Person;
+import part1.lesson23.task01.dao.PersonDAO;
+import part1.lesson23.task01.dao.jdbc.PersonDAOImpl;
+import part1.lesson23.task01.entity.Person;
 
 import java.sql.Connection;
 import java.text.DateFormat;

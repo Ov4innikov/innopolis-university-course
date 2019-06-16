@@ -1,4 +1,4 @@
-package part1.lesson22.task01.filter;
+package part1.lesson23.task01.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -1,9 +1,9 @@
-package part1.lesson22.task01.listener;
+package part1.lesson23.task01.listener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import part1.lesson22.task01.dao.ConnectionManager;
-import part1.lesson22.task01.dao.jdbc.DBConnectionManager;
+import part1.lesson23.task01.dao.ConnectionManager;
+import part1.lesson23.task01.dao.jdbc.DBConnectionManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

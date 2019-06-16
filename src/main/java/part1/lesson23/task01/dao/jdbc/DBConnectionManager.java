@@ -1,6 +1,6 @@
-package part1.lesson22.task01.dao.jdbc;
+package part1.lesson23.task01.dao.jdbc;
 
-import part1.lesson22.task01.dao.ConnectionManager;
+import part1.lesson23.task01.dao.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

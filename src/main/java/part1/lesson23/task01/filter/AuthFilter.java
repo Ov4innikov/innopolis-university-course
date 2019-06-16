@@ -1,10 +1,10 @@
-package part1.lesson22.task01.filter;
+package part1.lesson23.task01.filter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import part1.lesson22.task01.dao.UserDAO;
-import part1.lesson22.task01.dao.jdbc.UserDAOImpl;
-import part1.lesson22.task01.entity.User;
+import part1.lesson23.task01.dao.UserDAO;
+import part1.lesson23.task01.dao.jdbc.UserDAOImpl;
+import part1.lesson23.task01.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static java.util.Objects.nonNull;
 

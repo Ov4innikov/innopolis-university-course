@@ -1,8 +1,8 @@
-package part1.lesson22.task01.servlet;
+package part1.lesson23.task01.servlet;
 
-import part1.lesson22.task01.entity.Person;
-import part1.lesson22.task01.service.PersonService;
-import part1.lesson22.task01.service.PersonServiceImpl;
+import part1.lesson23.task01.entity.Person;
+import part1.lesson23.task01.service.PersonService;
+import part1.lesson23.task01.service.PersonServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

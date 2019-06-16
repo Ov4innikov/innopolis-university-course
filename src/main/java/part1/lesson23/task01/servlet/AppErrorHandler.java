@@ -1,8 +1,7 @@
-package part1.lesson22.task01.servlet;
+package part1.lesson23.task01.servlet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import part1.lesson22.task01.filter.AuthFilter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;

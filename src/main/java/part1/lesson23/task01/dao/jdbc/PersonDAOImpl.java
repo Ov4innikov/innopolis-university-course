@@ -1,7 +1,7 @@
-package part1.lesson22.task01.dao.jdbc;
+package part1.lesson23.task01.dao.jdbc;
 
-import part1.lesson22.task01.dao.PersonDAO;
-import part1.lesson22.task01.entity.Person;
+import part1.lesson23.task01.dao.PersonDAO;
+import part1.lesson23.task01.entity.Person;
 
 import java.sql.*;
 import java.util.ArrayList;

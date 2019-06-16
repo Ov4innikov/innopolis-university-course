@@ -1,15 +1,13 @@
-package part1.lesson22.task01.dao.jdbc;
+package part1.lesson23.task01.dao.jdbc;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
-import part1.lesson22.task01.dao.UserDAO;
-import part1.lesson22.task01.entity.Person;
-import part1.lesson22.task01.entity.User;
+import part1.lesson23.task01.dao.UserDAO;
+import part1.lesson23.task01.entity.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
