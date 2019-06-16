@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Students</title>
-    <meta charset="UTF-8"/>
+    <%@include file="WEB-INF/jspf/header-template.jsp" %>
 </head>
 <body>
 <h1>Students</h1>

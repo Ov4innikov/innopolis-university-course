@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>New Student</title>
+    <%@include file="WEB-INF/jspf/header-template.jsp" %>
 </head>
 <body>
 <h1>Adding a new student</h1>

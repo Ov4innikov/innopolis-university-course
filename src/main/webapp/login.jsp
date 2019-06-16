@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Login</title>
-
+    <%@include file="WEB-INF/jspf/header-template.jsp" %>
 </head>
 <body>
 
