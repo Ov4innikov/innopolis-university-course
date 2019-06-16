@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * @autor Овчинников Евгений
+ */
 public class DBConnectionManager implements ConnectionManager {
     private Connection connection;
 

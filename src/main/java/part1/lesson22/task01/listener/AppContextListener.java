@@ -12,9 +12,16 @@ import javax.servlet.annotation.WebListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Слушатель ServletContext.
+ *
+ * @autor Овчинников Евгений
+ */
 @WebListener
 public class AppContextListener implements ServletContextListener {
+
     private static final Logger logger = LogManager.getLogger(AppContextListener.class.getName());
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();

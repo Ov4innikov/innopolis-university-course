@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * Сервлет для обработки ошибок.
+ *
+ * @autor Овчинников Евгений
+ */
 @WebServlet(name = "errorHandler", loadOnStartup = 1, urlPatterns = "/error")
 public class AppErrorHandler extends HttpServlet {
 

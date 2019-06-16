@@ -18,7 +18,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import static java.util.Objects.nonNull;
 
 /**
- * Acidification filter.
+ * Фильтр для аутентификации.
+ *
+ * @autor Овчинников Евгений
  */
 @WebFilter(displayName = "AuthFilter", urlPatterns = "/*")
 public class AuthFilter implements Filter {

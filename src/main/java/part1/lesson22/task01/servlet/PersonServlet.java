@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 
+/**
+ * Фильтр для добавления Person.
+ *
+ * @autor Овчинников Евгений
+ */
 @WebServlet(name = "person", loadOnStartup = 1, urlPatterns = "/person")
 public class PersonServlet extends HttpServlet {
+
     private PersonService person;
 
     @Override

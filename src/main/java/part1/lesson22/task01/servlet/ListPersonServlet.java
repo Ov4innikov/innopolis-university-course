@@ -13,8 +13,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
+/**
+ * Сервлет для отображения списка Person.
+ *
+ * @autor Овчинников Евгений
+ */
 @WebServlet(name = "personList", loadOnStartup = 1, urlPatterns = "/person/list")
 public class ListPersonServlet extends HttpServlet {
+
     private PersonService person;
 
     @Override

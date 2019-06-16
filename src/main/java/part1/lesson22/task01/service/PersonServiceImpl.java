@@ -13,8 +13,15 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Реалзация PersonService.
+ *
+ * @autor Овчинников Евгений
+ */
 public class PersonServiceImpl implements PersonService {
+
     private static final Logger logger = LogManager.getLogger(PersonServiceImpl.class.getName());
+
     private final PersonDAO personDAO;
 
     public PersonServiceImpl(Connection con) {

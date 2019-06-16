@@ -9,6 +9,11 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * JDBC реализация PersonDAO.
+ *
+ * @autor Овчинников Евгений
+ */
 public class PersonDAOImpl implements PersonDAO {
     private static final Logger logger = LogManager.getLogger(PersonDAOImpl.class.getName());
     private final Connection connection;

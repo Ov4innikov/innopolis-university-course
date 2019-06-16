@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.util.Objects;
 
+/**
+ * @autor Овчинников Евгений
+ */
 @Getter
 @Setter
 public class User {

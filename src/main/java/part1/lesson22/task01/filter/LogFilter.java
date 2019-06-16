@@ -8,6 +8,11 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Фильтр для логирования.
+ *
+ * @autor Овчинников Евгений
+ */
 @WebFilter(displayName = "logFilter", urlPatterns = "/*")
 public class LogFilter implements Filter {
 

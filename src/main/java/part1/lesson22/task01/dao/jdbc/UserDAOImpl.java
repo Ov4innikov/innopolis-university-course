@@ -12,6 +12,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JDBC реализация UserDAO.
+ *
+ * @autor Овчинников Евгений
+ */
 public class UserDAOImpl implements UserDAO {
 
     private RowMapper<User> ROW_MAPPER = (ResultSet resultSet, int rowNum) -> {

@@ -3,6 +3,9 @@ package part1.lesson22.task01.entity;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * @autor Овчинников Евгений
+ */
 public class Person {
 
     private int id;
