@@ -1,4 +1,4 @@
-package part1.lesson22.task01.servlet;
+package part1.lesson22.task01.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -10,7 +10,8 @@ import org.apache.logging.log4j.Logger;
 
 @WebFilter(displayName = "logFilter", urlPatterns = "/*")
 public class LogFilter implements Filter {
-    private static final Logger logger = LogManager.getLogger(LogFilter.class.getName());
+
+    private static final Logger logger = LogManager.getLogger(LogFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

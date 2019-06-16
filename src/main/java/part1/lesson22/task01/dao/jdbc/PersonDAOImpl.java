@@ -31,14 +31,13 @@ public class PersonDAOImpl implements PersonDAO {
                     Person person = new Person();
                     person.setId(resultSet.getInt(1));
                     person.setName(resultSet.getString(2));
-                    Date date = new Date(resultSet.getLong(3));
-                    person.setBirthDate(date);
+                    person.setBirthDate(resultSet.getDate(3));
                     result.add(person);
                 }
             }
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "An exception occurred on the DAO layer.", e);
+            logger.error("An exception occurred on the DAO layer.", e);
         }
         return result;
     }
@@ -50,12 +49,12 @@ public class PersonDAOImpl implements PersonDAO {
             if (person.getBirthDate() == null) {
                 statement.setNull(2, Types.BIGINT);
             } else {
-                statement.setLong(2, person.getBirthDate().getTime());
+                statement.setDate(2, new Date(person.getBirthDate().getTime()));
             }
             statement.execute();
             return true;
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "An exception occurred on the DAO layer.", e);
+            logger.error("An exception occurred on the DAO layer.", e);
             return false;
         }
     }

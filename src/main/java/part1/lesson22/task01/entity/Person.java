@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Person {
+
     private int id;
     private String name;
     private Date birthDate;

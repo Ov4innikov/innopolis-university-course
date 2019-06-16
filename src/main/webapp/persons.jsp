@@ -1,4 +1,4 @@
-<%@ page import="ru.inno.stc14.entity.Person" %>
+<%@ page import="part1.lesson22.task01.entity.Person" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -24,6 +24,6 @@
     <% } %>
 </table>
 <br>
-<a href="/">Main page</a>
+<a href="${pageContext.request.contextPath}/">Main page</a>
 </body>
 </html>

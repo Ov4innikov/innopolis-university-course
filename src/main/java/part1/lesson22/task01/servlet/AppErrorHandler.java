@@ -1,5 +1,9 @@
 package part1.lesson22.task01.servlet;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import part1.lesson22.task01.filter.AuthFilter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +14,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "errorHandler", loadOnStartup = 1, urlPatterns = "/error")
 public class AppErrorHandler extends HttpServlet {
+
+    private static final Logger logger = LogManager.getLogger(AppErrorHandler.class);
+
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -26,6 +33,7 @@ public class AppErrorHandler extends HttpServlet {
         Throwable throwable = (Throwable) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
         Integer statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         String servletName = (String) request.getAttribute(RequestDispatcher.ERROR_SERVLET_NAME);
+        logger.info("Exce", throwable);
         if (servletName == null) {
             servletName = "Unknown";
         }

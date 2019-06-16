@@ -1,10 +1,8 @@
 package part1.lesson22.task01.service;
 
-import part1.lesson22.task01.service.PersonService;
 import part1.lesson22.task01.dao.PersonDAO;
 import part1.lesson22.task01.dao.jdbc.PersonDAOImpl;
 import part1.lesson22.task01.entity.Person;
-import part1.lesson22.task01.servlet.AppContextListener;
 
 import java.sql.Connection;
 import java.text.DateFormat;
@@ -39,11 +37,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     private Date safeParseDate(String birthStr) {
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             return format.parse(birthStr);
         } catch (ParseException e) {
-            logger.log(Level.SEVERE, "Date parsing error", e);
+            logger.error("Date parsing error", e);
             throw new RuntimeException(e);
         }
     }
