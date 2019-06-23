@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import part1.lesson23.task01.dao.UserDAO;
+import part1.lesson23.task01.entity.Role;
 import part1.lesson23.task01.entity.User;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
 
     private RowMapper<User> ROW_MAPPER = (ResultSet resultSet, int rowNum) -> {
-        return new User(resultSet.getInt("id"), resultSet.getString("login"), resultSet.getString("password"), User.ROLE.valueOf(resultSet.getString("role")));
+        return new User(resultSet.getInt("id"), resultSet.getString("login"), resultSet.getString("password"), Role.valueOf(resultSet.getString("role")));
     };
 
     private JdbcTemplate jdbcTemplate;
