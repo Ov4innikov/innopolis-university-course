@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import part1.lesson23.task01.dao.UserDAO;
 import part1.lesson23.task01.dao.jdbc.UserDAOImpl;
+import part1.lesson23.task01.entity.Role;
 import part1.lesson23.task01.entity.User;
 
 import javax.servlet.*;
@@ -53,12 +54,12 @@ public class AuthFilter implements Filter {
                 nonNull(session.getAttribute("login")) &&
                 nonNull(session.getAttribute("password"))) {
             logger.info("Success session");
-            final User.ROLE role = (User.ROLE) session.getAttribute("role");
+            final Role role = (Role) session.getAttribute("role");
 
             filterChain.doFilter(req, res);
         } else if (userDAO.loginAndPasswordIsTrue(login, password)) {
             logger.info("Create session");
-            final User.ROLE role = userDAO.getUserByLogin(login).getRole();
+            final Role role = userDAO.getUserByLogin(login).getRole();
             req.getSession().setAttribute("password", password);
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("role", role);
@@ -66,7 +67,7 @@ public class AuthFilter implements Filter {
             filterChain.doFilter(req, res);
         } else {
             logger.info("Fail session");
-            moveToMenu(req, res, User.ROLE.UNKNOWN);
+            moveToMenu(req, res, Role.UNKNOWN);
         }
     }
 
@@ -77,7 +78,7 @@ public class AuthFilter implements Filter {
      */
     private void moveToMenu(final HttpServletRequest req,
                             final HttpServletResponse res,
-                            final User.ROLE role)
+                            final Role role)
             throws ServletException, IOException {
             req.getRequestDispatcher("/login.jsp").forward(req, res);
     }
