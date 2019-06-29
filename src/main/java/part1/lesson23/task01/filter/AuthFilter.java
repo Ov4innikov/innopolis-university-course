@@ -6,7 +6,7 @@ import part1.lesson23.task01.dao.UserDAO;
 import part1.lesson23.task01.dao.jdbc.UserDAOImpl;
 import part1.lesson23.task01.dao.proxy.UserDaoProxyLooger;
 import part1.lesson23.task01.entity.Role;
-import part1.lesson23.task01.entity.User;
+import part1.lesson23.task01.service.DebugStrategyOfLoging;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -32,7 +32,7 @@ public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        userDAO = new UserDaoProxyLooger(new UserDAOImpl((Connection) filterConfig.getServletContext().getAttribute("DBConnection")));
+        userDAO = new UserDaoProxyLooger(new UserDAOImpl((Connection) filterConfig.getServletContext().getAttribute("DBConnection")), new DebugStrategyOfLoging());
     }
 
     @Override
