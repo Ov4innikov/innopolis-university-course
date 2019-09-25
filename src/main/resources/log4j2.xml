@@ -5,14 +5,14 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <JDBC name="MyPostgreDatabase" tableName="lesson15.LOGS">
-            <ConnectionFactory class="part1.lesson16.task01.ConnectionFactory" method="getConnection" />
-            <Column name="id" pattern="%u" isUnicode="false"/>
-            <Column name="DATE" isEventTimestamp="true" isUnicode="false"/>
-            <Column name="LOG_LEVEL" pattern="%level" isUnicode="false"/>
-            <Column name="MESSAGE" pattern="%m" isUnicode="false"/>
-            <Column name="EXCEPTION" pattern="%throwable " isUnicode="false"/>
-        </JDBC>
+<!--        <JDBC name="MyPostgreDatabase" tableName="lesson15.LOGS">-->
+<!--            <ConnectionFactory class="part1.lesson16.task01.ConnectionFactory" method="getConnection" />-->
+<!--            <Column name="id" pattern="%u" isUnicode="false"/>-->
+<!--            <Column name="DATE" isEventTimestamp="true" isUnicode="false"/>-->
+<!--            <Column name="LOG_LEVEL" pattern="%level" isUnicode="false"/>-->
+<!--            <Column name="MESSAGE" pattern="%m" isUnicode="false"/>-->
+<!--            <Column name="EXCEPTION" pattern="%throwable " isUnicode="false"/>-->
+<!--        </JDBC>-->
     </Appenders>
 
     <Loggers>
@@ -25,6 +25,9 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
+        <Logger name= "part1.lesson22" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="Console"/>
